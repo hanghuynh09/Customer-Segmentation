@@ -23,14 +23,14 @@ SELECT
 	COUNT(*) AS total_rows
 FROM customer_data;
 ```
-<img src="sql-snapshot\code snapshot\total_row.png" alt="Getting started" width="100" />
+<img src="code snapshot\total_row.png" alt="Getting started" width="100" />
 
 ```sql
 SELECT 
 	DISTINCT COUNT(customer_id) AS distict_customer_id
 FROM customer_data;  
 ```
-<img src="./sql-snapshot\code snapshot\distinct_customer_count.png" alt="Getting started" width="140" />
+<img src="./code snapshot\distinct_customer_count.png" alt="Getting started" width="140" />
 
 ```sql
 SELECT *
@@ -47,7 +47,7 @@ WHERE
     invoice_date IS NULL OR
     shopping_mall IS NULL OR shopping_mall ='';
 ```
-<img src="sql-snapshot\code snapshot\null_check.png" alt="Getting started" width="600" />
+<img src="code snapshot\null_check.png" alt="Getting started" width="600" />
 
  ```sql
 -- check the date data range    
@@ -58,7 +58,7 @@ FROM customer_data;
 
 -- SET @today = '1-1-2024';
 ```
-<img src="sql-snapshot\code snapshot\date_range.png" width="150" />
+<img src="code snapshot\date_range.png" width="150" />
 
 3. RFM Calculation:
 3.1. Quartile Calculation
@@ -140,7 +140,7 @@ SELECT
 FROM  percentile, min_max, ranked
 GROUP BY min, max; 
  ```
-<img src="sql-snapshot\code snapshot\quartile_calc.png" width="300" />
+<img src="code snapshot\quartile_calc.png" width="300" />
 
 3.2. Score Assignment:
 ```sql
@@ -194,7 +194,7 @@ FROM r_score_range AS R
 JOIN f_score_range AS F ON R.I = F.I
 JOIN m_score_range AS M ON R.I = M.I;
 ```
-<img src="sql-snapshot\code snapshot\score_range.png" width="450" />
+<img src="code snapshot\score_range.png" width="450" />
 
 ```sql
 CREATE VIEW rfm_view AS 
@@ -220,7 +220,7 @@ SELECT * FROM rfm_view
 ORDER BY avg_rfm DESC
 LIMIT 10; 
 ```   
-<img src="sql-snapshot\code snapshot\top_avg_rfm.png" width="350" />
+<img src="code snapshot\top_avg_rfm.png" width="350" />
 
 3.3. Customer Segmentation:
 ```sql
@@ -247,7 +247,7 @@ SELECT * FROM  customer_value_seg
 ORDER BY avg_rfm DESC
 LIMIT 5;
 ```
-<img src="sql-snapshot\code snapshot\top_cus_va_seg.png" width="450" />
+<img src="code snapshot\top_cus_va_seg.png" width="450" />
 
 3.4. Customer Distribution:
 ```sql
@@ -258,7 +258,7 @@ SELECT
 FROM customer_value_seg
 GROUP BY value_seg;  
 ``` 
-<img src="sql-snapshot\code snapshot\dis_va.png" width="200" />
+<img src="code snapshot\dis_va.png" width="200" />
 
 ```sql
 -- Distribution of Customers by Customer Segment
@@ -268,7 +268,7 @@ SELECT
 FROM customer_value_seg
 GROUP BY cus_seg; 
 ```
-<img src="sql-snapshot\code snapshot\dis_cus.png" width="200" />
+<img src="code snapshot\dis_cus.png" width="200" />
 
 ```sql
 -- Distribution of customers across different RFM customer segments within each value segment
@@ -281,7 +281,7 @@ GROUP BY value_seg, cus_seg
 ORDER BY customer_count DESC; 
 
 ```
-<img src="sql-snapshot\code snapshot\dis_cus_va.png" width="250" />
+<img src="code snapshot\dis_cus_va.png" width="250" />
 
 **These are some recommendation based on customer segmentation results:**
 
